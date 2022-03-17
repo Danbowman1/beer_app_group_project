@@ -13,7 +13,7 @@ const BeerInfo = () => {
             .then(res=> {
                 console.log(res)
                 console.log(res.data)
-                setBeer(res.data)
+                setBeer(res.data[0])
             })
             .catch(err=>console.log(err))
     }, [id])
@@ -22,14 +22,26 @@ const BeerInfo = () => {
 
     return (
         <div>
-        {
-            beer?
-            <div>
-            <p>Beer Name:{beer.name}</p>
-            <p>Description: {beer.description}</p>
+        
+            <div className='topContainer'>
+                <img src={beer.image_url} alt="beer" className='beerImage'/>
+                <div className='beerNameContainer'>
+                    <p className='beerName'>{beer.name}</p>
+                    <p>"{beer.tagline}"</p>
+                </div>
             </div>
-            :null
-        }
+            <hr />
+            <div className='middleContainer'>
+                <div>
+                    <h3>Description</h3>
+                    <p>Description: {beer.description}</p>
+                </div>
+                <div>
+                    <h3>Food Pairing</h3>
+                    
+                </div>
+            </div>
+            
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
+
 const BeerGallery = (props) => {
     
     const [beerList, setBeerList] = useState([])
@@ -24,7 +25,7 @@ useEffect(()=>{
     return (
         
         <div>
-            <div>
+            <div className='searchContainer'>
                 <form >
                 <input type="search" placeholder='Beer Search...' id="beerSearch" onChange={(e)=>{setSearchTerm(e.target.value)}}/>
                 </form>
@@ -33,7 +34,7 @@ useEffect(()=>{
             {beerList.filter((val)=>{
                 if(searchTerm === ''){
                     return val
-                } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase()) || val.tagline.toLowerCase().includes(searchTerm.toLowerCase())){
+                } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase()) || val.tagline.toLowerCase().includes(searchTerm.toLowerCase()) || val.image_url.toLowerCase().includes(searchTerm.toLowerCase())){
                     return val
                 }
             }).map((beer,index)=> {
